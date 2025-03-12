@@ -8,7 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
         <link href="css/styles.css" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
-        <script src="script.js"></script>
     </head>
     <body>
       <header>
@@ -19,23 +18,15 @@
                   <li><a href="aboutus.html">ABOUT US</a></li>
                   <li><a href="contact.html">CONTACT</a></li>
                   <li><a href="jackets.html">JACKETS</a></li>
-                  <li><a href="shoppingcart.html">SHOP</a></li>
+                  <a href="shoppingcart.html" class="cart-link">
+                    <img src="Images/cart.png" class="shopcart" alt="Cart icon">
+                    <span id="cart-count">0</span>
+                  </a>
               </ul>
           </nav>
       </header>
       <main>
-          <section class="productflex">
-            <img src="Images/jacket1.jpg" class="jacket--1" alt="Grey jacket" >
-          <div class="product_info"> 
-              <h1>Jacket 1</h1>
-              <p>$59.99</p>
-              <p>Made by 100% recycled fabric. </p>
-              <p>Available in sizes S, M, L and XL</p>
-              <a class="btn" href="shoppingcart.html">
-                Add to cart
-              </a>
-        </div>
-      </section>
+        <div id="jacketcontainer"></div>
       </main>
       <footer>
         <div class="footerlink">
@@ -47,5 +38,7 @@
         </div>
                &copy; 2024 Rainy Days. All rights reserved
    </footer>
+   <script src="productView.js"></script>
+   <script src="script.js"></script>
  </body>
 </html>

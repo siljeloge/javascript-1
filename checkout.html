@@ -18,14 +18,23 @@
                   <li><a href="aboutus.html">ABOUT US</a></li>
                   <li><a href="contact.html">CONTACT</a></li>
                   <li><a href="jackets.html">JACKETS</a></li>
-                  <li><a href="shoppingcart.html">SHOP</a></li>
+                  <a href="shoppingcart.html" class="cart-link">
+                    <img src="Images/cart.png" class="shopcart" alt="Cart icon">
+                    <span id="cart-count">0</span>
+                  </a>
               </ul>
           </nav>
       </header>
-      <div class="checkoutsummary">
-        <h1>Your current shoppingcart</h1>
-        <h2>Total:</h2>
-      </div>
+
+      <div class="cart"> 
+        <h1>CHECKOUT</h1>
+        <hr>
+        <div id="cart-items"></div>
+        <hr>
+        <h3>Total: <span id="cart-total">$0</span></h3>
+        <button id="clear-cart">Clear Cart</button>
+    </div>
+
       <section class="flex-container-purchase">
         <div class="shipping-form">
           <form action="shipping-form">
@@ -59,7 +68,7 @@
         </div>
         </section>
         <main>
-          <a class="btn" id="purchasebtn" href="confirmed.html">
+          <a class="btn" id="purchase-btn" href="confirmed.html">
             PURCHASE
           </a>
       </main>
@@ -73,5 +82,6 @@
         </div>
                &copy; 2024 Rainy Days. All rights reserved
    </footer>
+   <script src="script.js"></script>
  </body>
 </html>

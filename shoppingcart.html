@@ -8,7 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
         <link href="css/styles.css" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
-        <script src="script.js"></script>
     </head>
     <body>
       <header>
@@ -19,23 +18,23 @@
                   <li><a href="aboutus.html">ABOUT US</a></li>
                   <li><a href="contact.html">CONTACT</a></li>
                   <li><a href="jackets.html">JACKETS</a></li>
-                  <li><a href="shoppingcart.html" class="active">SHOP</a></li>
+                  <a href="shoppingcart.html" class="cart-link">
+                    <img src="Images/cart.png" class="shopcart" alt="Cart icon">
+                    <span id="cart-count">0</span>
+                  </a>
               </ul>
           </nav>
-      </header>
-      <main>
-         <section>
-          <div class="cart"> 
-              <h1>SHOPPING CART</h1>
-              <hr>
-              
-              <hr>
-              <a class="btn" href="checkout.html">
-                CHECK OUT
-              </a>
-          </div>
-        </section>
-      </main>
+        </header>
+          <main>
+            <section>
+              <div class="cart">
+                <hr>
+                <div id="cart-container"></div>
+                <hr>
+                <a class="btn" href="checkout.html">CHECK OUT</a>
+              </div>
+            </section>
+        </main>
       <footer>
         <div class="footerlink">
            <ul>
@@ -46,5 +45,6 @@
         </div>
                &copy; 2024 Rainy Days. All rights reserved
    </footer>
+   <script src="script.js"></script>
  </body>
 </html>
