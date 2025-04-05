@@ -1,8 +1,9 @@
+const jacketcontainer = document.getElementById("jacketcontainer");
 const SINGLE_PRODUCT_URL = "https://v2.api.noroff.dev/rainy-days/b8b528fc-6c60-41f6-a5a9-9a8b27a9482a";
 
 async function fetchProduct() {
     try {
-        const response = await fetch(SINGLE_PRODUCT_URL); // <--- Use new name here!
+        const response = await fetch(SINGLE_PRODUCT_URL); 
         const data = await response.json();
         const product = data.data;
 
@@ -26,7 +27,7 @@ async function fetchProduct() {
         image.alt = product.image?.alt || "Product image";
         title.textContent = product.title || "No title available";
         description.textContent = product.description || "No description available";
-        price.textContent = `$${product.price}` || "Price not available";
+        price.textContent = product.price ? `$${product.price}` : "Price not available";
         button.textContent = "Add to Cart";
 
         button.addEventListener("click", () => {

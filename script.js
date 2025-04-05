@@ -68,7 +68,7 @@ function renderProducts(productList) {
         content.appendChild(title);
         content.appendChild(price);
         content.appendChild(button);
-        card.appendChild(imageLink); // Use the wrapped image
+        card.appendChild(imageLink);
         card.appendChild(content);
         container.appendChild(card);
     });
@@ -112,7 +112,7 @@ function removeFromCart(index) {
     displayCartItems(); // Refresh view
 }
 
-// Display cart items on shoppingcart.html
+// Display cart items on shoppingcart.html with total price
 function displayCartItems() {
     const cartPageContainer = document.querySelector(".cart");
     if (!cartPageContainer) return;
@@ -146,6 +146,8 @@ function displayCartItems() {
         const itemPrice = document.createElement("p");
         itemPrice.textContent = `$${item.price}`;
 
+        // add remove button 
+
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "REMOVE";
         removeBtn.className = "remove-btn";
@@ -164,10 +166,14 @@ function displayCartItems() {
 
     cartPageContainer.appendChild(itemList);
 
+    // show the total price
+
     const totalDisplay = document.createElement("p");
     totalDisplay.className = "cart-total";
     totalDisplay.innerHTML = `<strong>Total:</strong> $${total.toFixed(2)}`;
     cartPageContainer.appendChild(totalDisplay);
+
+    // Redirect to checkout.html
 
     if (!window.location.href.includes("checkout.html")) {
         const checkoutLink = document.createElement("a");
@@ -183,18 +189,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (purchaseBtn) {
         purchaseBtn.addEventListener("click", (event) => {
-            event.preventDefault(); // Prevent form submit (if in a form)
+            event.preventDefault(); // Prevent form submit 
 
             const confirmPurchase = confirm("Are you sure you want to complete this purchase?");
 
             if (confirmPurchase) {
-                // Clear cart
+                // Clear the cart after purchase
                 localStorage.removeItem("cart");
 
-                // Show success message
-                alert("Thank you for your purchase! Your order has been placed.");
+                // Show thank you message
+                alert("Thank you for your purchase!");
 
-                // Optional: redirect to a thank you page
+                // Redirect to a thank you-page
                 window.location.href = "confirmed.html";
             } else {
                 // User canceled
