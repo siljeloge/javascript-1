@@ -4,7 +4,7 @@ const BASE_URL = "https://v2.api.noroff.dev/rainy-days";
 
 let products = [];
 
-// Fetch products from API
+// Fetch all the products from Noroff API
 async function fetchProducts() {
     try {
         const response = await fetch(BASE_URL);
@@ -25,7 +25,7 @@ async function fetchProducts() {
     }
 }
 
-// Render products to page
+// Render products to jackets.html
 function renderProducts(productList) {
     if (!container) return;
     container.innerHTML = "";
@@ -49,7 +49,7 @@ function renderProducts(productList) {
         image.src = product.image?.url || "placeholder.jpg";
         image.alt = product.image?.alt || "Product image";
 
-        // Wrap image in a link to jacket1.html
+        // Wrap images in a link to jacket1.html
         imageLink.href = "jacket1.html";
         imageLink.appendChild(image);
 
@@ -94,7 +94,7 @@ function applyFiltersAndSorting(productList) {
     renderProducts(productList);
 }
 
-// Update cart count in header
+// Update cart count 
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const countElement = document.getElementById("cart-count");
@@ -103,16 +103,15 @@ function updateCartCount() {
     }
 }
 
-// Remove item from cart
 function removeFromCart(index) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
-    displayCartItems(); // Refresh view
+    displayCartItems();
 }
 
-// Display cart items on shoppingcart.html with total price
+// Display cart items with total price
 function displayCartItems() {
     const cartPageContainer = document.querySelector(".cart");
     if (!cartPageContainer) return;
@@ -146,8 +145,6 @@ function displayCartItems() {
         const itemPrice = document.createElement("p");
         itemPrice.textContent = `$${item.price}`;
 
-        // add remove button 
-
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "REMOVE";
         removeBtn.className = "remove-btn";
@@ -166,14 +163,10 @@ function displayCartItems() {
 
     cartPageContainer.appendChild(itemList);
 
-    // show the total price
-
     const totalDisplay = document.createElement("p");
     totalDisplay.className = "cart-total";
     totalDisplay.innerHTML = `<strong>Total:</strong> $${total.toFixed(2)}`;
     cartPageContainer.appendChild(totalDisplay);
-
-    // Redirect to checkout.html
 
     if (!window.location.href.includes("checkout.html")) {
         const checkoutLink = document.createElement("a");
@@ -184,34 +177,25 @@ function displayCartItems() {
     }
 }
 
+//  Form validation + purchase handling
 document.addEventListener("DOMContentLoaded", () => {
-    const purchaseBtn = document.getElementById("purchase-btn");
-
-    if (purchaseBtn) {
-        purchaseBtn.addEventListener("click", (event) => {
-            event.preventDefault(); // Prevent form submit 
-
+    const checkoutForm = document.querySelector("form");
+    if (checkoutForm) {
+        checkoutForm.addEventListener("submit", (event) => {
             const confirmPurchase = confirm("Are you sure you want to complete this purchase?");
-
-            if (confirmPurchase) {
-                // Clear the cart after purchase
-                localStorage.removeItem("cart");
-
-                // Show thank you message
-                alert("Thank you for your purchase!");
-
-                // Redirect to a thank you-page
-                window.location.href = "confirmed.html";
-            } else {
-                // User canceled
+            window.location.href = "confirmed.html";
+            if (!confirmPurchase) {
+                event.preventDefault();
                 alert("Purchase cancelled.");
+                
+            } else {
+                localStorage.removeItem("cart");
+                alert("Thank you for your purchase!");
+                
             }
         });
     }
-});
 
-// Run on page load
-document.addEventListener("DOMContentLoaded", () => {
     fetchProducts();
     updateCartCount();
     displayCartItems();

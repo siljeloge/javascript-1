@@ -1,84 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Checkout | Rainy Days</title>
-        <link rel="icon" type="image/x-icon" href="Images/favicon.ico.jpeg">
-        <meta charset="UTF-8">
-        <meta name="description" content="Rainjackets made with good quality">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-        <link href="css/styles.css" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
-    </head>
-    <body>
-      <header>
-        <a href="index.html">
-          <img src="Images/Rainydayslogo.png" alt="company logo" class="logo">
-        </a>
-        <nav>
-          <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="aboutus.html">ABOUT US</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-            <li><a href="jackets.html">JACKETS</a></li>
-            <li>
-              <a href="shoppingcart.html" class="cart-link">
-                <img src="Images/cart.png" class="shopcart" alt="Cart icon">
-                <span id="cart-count">0</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <div class="cart"> 
-    </div>
-    <hr>
-      <section class="flex-container-purchase">
-        <div class="shipping-form">
-          <form action="shipping-form">
-            <h3>SHIPPING DETAILS</h3>
-            <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullname" required>
-            <label for="streetname">Streetname</label>
-            <input type="text" id="streetname" name="streetname" required>
-            <label for="zipcode">Zipcode/city</label>
-            <input type="text" id="zipcode" name="zipcode" required>
-            <label for="email">E-mail</label>
-            <input type="text" id="email" name="email" required>
-            <label for="phonenumber">Phonenumber</label>
-            <input type="text" id="phonenumber" name="phonenumber" required>
-          </form>
-        </div>
-        <div class="payment-form">
-          <form action="payment-form">
-            <h3>PAYMENT DETAILS</h3>
-            <label for="cardname">Cardholder name</label>
-            <input type="text" id="cardname" name="cardname" required>
-            <label for="cardadress">Cardholder adress</label>
-            <input type="text" id="cardadress" name="cardholderadress" required>
-            <label for="cardnumber">Cardnumber</label>
-            <input type="text" id="cardnumber" name="cardnumber" required>
-            <label for="expdate">Exp.date</label>
-            <input type="text" id="expdate" name="expdate" required>
-            <label for="controlnumber">Controlnumber</label>
-            <input type="text" id="controlnumber" name="Controlnumber" required>
-          </form>
-        </div>
-        </section>
-        <main>
-          <a class="btn" id="purchase-btn" href="confirmed.html">
-            PURCHASE
+<head>
+  <title>Checkout | Rainy Days</title>
+  <link rel="icon" type="image/x-icon" href="Images/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="description" content="Rainjackets made with good quality">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link href="css/styles.css" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="Images/Rainydayslogo.png" alt="company logo" class="logo">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="aboutus.html">ABOUT US</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="jackets.html">JACKETS</a></li>
+        <li>
+          <a href="shoppingcart.html" class="cart-link">
+            <img src="Images/cart.png" class="shopcart" alt="Cart icon">
+            <span id="cart-count">0</span>
           </a>
-      </main>
-      <footer>
-        <div class="footerlink">
-           <ul>
-               <li><a href="aboutus.html">ABOUT US</a></li>
-               <li><a href="contact.html">CONTACT</a></li>
-               <li><a href="jackets.html">JACKETS</a></li>
-           </ul>
-        </div>
-               &copy; 2024 Rainy Days. All rights reserved
-   </footer>
-   <script src="script.js"></script>
- </body>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="cart"></div>
+  <hr>
+
+  <form action="confirmed.html" method="POST">
+    <section class="flex-container-purchase">
+      <div class="shipping-form">
+        <h3>SHIPPING DETAILS</h3>
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="streetname">Street Name</label>
+        <input type="text" id="streetname" name="streetname" required>
+
+        <label for="zipcode">Zip Code / City</label>
+        <input type="text" id="zipcode" name="zipcode" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phonenumber">Phone Number</label>
+        <input type="tel" id="phonenumber" name="phonenumber" required>
+      </div>
+
+      <div class="payment-form">
+        <h3>PAYMENT DETAILS</h3>
+        <label for="cardname">Cardholder Name</label>
+        <input type="text" id="cardname" name="cardname" required>
+
+        <label for="cardaddress">Cardholder Address</label>
+        <input type="text" id="cardaddress" name="cardaddress" required>
+
+        <label for="cardnumber">Card Number</label>
+        <input type="text" id="cardnumber" name="cardnumber" required>
+
+        <label for="expdate">Exp. Date</label>
+        <input type="text" id="expdate" name="expdate" required>
+
+        <label for="controlnumber">Control Number (CVC)</label>
+        <input type="text" id="controlnumber" name="controlnumber" required>
+      </div>
+    </section>
+    <div class="purchase-button-wrapper">
+      <button type="submit" class="btn" id="purchase-btn">PURCHASE</button>
+    </div>
+  </form>
+  <footer>
+    <div class="footerlink">
+      <ul>
+        <li><a href="aboutus.html">ABOUT US</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="jackets.html">JACKETS</a></li>
+      </ul>
+    </div>
+    &copy; 2024 Rainy Days. All rights reserved
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
