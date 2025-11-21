@@ -4,7 +4,6 @@ const BASE_URL = "https://v2.api.noroff.dev/rainy-days";
 
 let products = [];
 
-// Fetch all the products from Noroff API
 async function fetchProducts() {
     try {
         const response = await fetch(BASE_URL);
@@ -25,7 +24,6 @@ async function fetchProducts() {
     }
 }
 
-// Render products to jackets.html
 function renderProducts(productList) {
     if (!container) return;
     container.innerHTML = "";
@@ -49,8 +47,7 @@ function renderProducts(productList) {
         image.src = product.image?.url || "placeholder.jpg";
         image.alt = product.image?.alt || "Product image";
 
-        // Wrap images in a link to jacket1.html
-        imageLink.href = "jacket1.html";
+        imageLink.href = `jacket1.html?id=${product.id}`;
         imageLink.appendChild(image);
 
         title.textContent = product.title || "No title available";
@@ -68,13 +65,14 @@ function renderProducts(productList) {
         content.appendChild(title);
         content.appendChild(price);
         content.appendChild(button);
+
         card.appendChild(imageLink);
         card.appendChild(content);
         container.appendChild(card);
     });
 }
 
-// Sort by price
+// ------------------ SORTING ------------------
 if (sortPriceSelect) {
     sortPriceSelect.addEventListener("change", () => {
         let sortedProducts = [...products];
@@ -85,16 +83,11 @@ if (sortPriceSelect) {
             sortedProducts.sort((a, b) => b.price - a.price);
         }
 
-        applyFiltersAndSorting(sortedProducts);
+        renderProducts(sortedProducts);
     });
 }
 
-// Apply sorting
-function applyFiltersAndSorting(productList) {
-    renderProducts(productList);
-}
-
-// Update cart count 
+// ------------------ UPDATE CART COUNT ------------------
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const countElement = document.getElementById("cart-count");
@@ -103,6 +96,7 @@ function updateCartCount() {
     }
 }
 
+// ------------------ REMOVE FROM CART ------------------
 function removeFromCart(index) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.splice(index, 1);
@@ -111,7 +105,7 @@ function removeFromCart(index) {
     displayCartItems();
 }
 
-// Display cart items with total price
+// ------------------ DISPLAY CART ITEMS ------------------
 function displayCartItems() {
     const cartPageContainer = document.querySelector(".cart");
     if (!cartPageContainer) return;
@@ -177,21 +171,20 @@ function displayCartItems() {
     }
 }
 
-//  Form validation + purchase handling
+// ------------------ FORM + PAGE LOAD HANDLING ------------------
 document.addEventListener("DOMContentLoaded", () => {
     const checkoutForm = document.querySelector("form");
     if (checkoutForm) {
         checkoutForm.addEventListener("submit", (event) => {
             const confirmPurchase = confirm("Are you sure you want to complete this purchase?");
             window.location.href = "confirmed.html";
+
             if (!confirmPurchase) {
                 event.preventDefault();
                 alert("Purchase cancelled.");
-                
             } else {
                 localStorage.removeItem("cart");
                 alert("Thank you for your purchase!");
-                
             }
         });
     }

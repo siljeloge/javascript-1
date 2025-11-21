@@ -1,9 +1,18 @@
 const jacketcontainer = document.getElementById("jacketcontainer");
-const SINGLE_PRODUCT_URL = "https://v2.api.noroff.dev/rainy-days/b8b528fc-6c60-41f6-a5a9-9a8b27a9482a";
+
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("id");
+
+if (!productId) {
+    jacketcontainer.innerHTML = "<p>No product selected.</p>";
+    throw new Error("No product ID in URL");
+}
+
+const SINGLE_PRODUCT_URL = `https://v2.api.noroff.dev/rainy-days/${productId}`;
 
 async function fetchProduct() {
     try {
-        const response = await fetch(SINGLE_PRODUCT_URL); 
+        const response = await fetch(SINGLE_PRODUCT_URL);
         const data = await response.json();
         const product = data.data;
 
@@ -11,22 +20,23 @@ async function fetchProduct() {
         const image = document.createElement("img");
         const content = document.createElement("div");
         const title = document.createElement("h2");
-        const description = document.createElement("h3");
+        const description = document.createElement("p");
         const price = document.createElement("p");
         const button = document.createElement("button");
 
-        card.className = 'card';
-        image.className = 'card-image';
-        content.className = 'card-content';
-        title.className = 'card-title';
-        description.className = 'card-description';
-        price.className = 'card-price';
-        button.className = 'add-to-cart-btn';
+        card.className = "card";
+        image.className = "card-image";
+        content.className = "card-content";
+        title.className = "card-title";
+        description.className = "card-description";
+        price.className = "card-price";
+        button.className = "add-to-cart-btn";
 
         image.src = product.image?.url || "placeholder.jpg";
         image.alt = product.image?.alt || "Product image";
-        title.textContent = product.title || "No title available";
-        description.textContent = product.description || "No description available";
+
+        title.textContent = product.title;
+        description.textContent = product.description;
         price.textContent = product.price ? `$${product.price}` : "Price not available";
         button.textContent = "Add to Cart";
 
@@ -42,6 +52,7 @@ async function fetchProduct() {
         content.appendChild(price);
         content.appendChild(description);
         content.appendChild(button);
+
         card.appendChild(image);
         card.appendChild(content);
 
@@ -49,13 +60,14 @@ async function fetchProduct() {
 
     } catch (error) {
         console.error("Error fetching product:", error);
-        jacketcontainer.innerHTML = `<p>Failed to load product. Please try again later.</p>`;
+        jacketcontainer.innerHTML = `<p>Failed to load product.</p>`;
     }
 }
 
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const countElement = document.getElementById("cart-count");
+
     if (countElement) {
         countElement.textContent = cart.length;
     }
@@ -65,3 +77,4 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchProduct();
     updateCartCount();
 });
+

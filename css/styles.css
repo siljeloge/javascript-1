@@ -117,7 +117,7 @@
     text-align: center;
     padding: 20px;
     position:static;
-	clear:both;
+	  clear:both;
   }
   
   .footerlink a, nav a{
@@ -254,45 +254,38 @@
     font-family: 'Maven Pro', 'verdana', 'sans-serif';
     padding: 5px;
     margin-top: 30px;
-    float: right;
-    margin-right: 50px;
+    margin-bottom: 100px;
+    margin-left: 50px;
   }
   
   #container{
-    margin-bottom: 100px;
-    padding: 30px;
-    display: block;
-    overflow: hidden;
-    width: 1200px;
-    display: block;
-    margin: auto;
-  }
-
-  #container div{
-    padding-right: 30px;
-    padding-left: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    box-sizing: border-box;
   }
 
   .card-image{
-    max-height: 300px;
+    width: 300px;
+    height: 350px;
   }
 
-  .card-image, #container div{
-    max-width: 340px;
-    float: left;
-    margin-top: 50px;
+  #container div{
+    max-width: 300px;
   }
 
   #container h2{
     font-size: 18px;
-    display: block;
-    margin: auto;
-    padding-right: 100px;
   }
 
   #container p{
     padding-top: 20px;
-    padding-left: 50px;
     font-size: 20px;
     color: #042a32;
     font-family: 'Maven Pro', 'verdana', 'sans-serif';
@@ -310,33 +303,70 @@
     margin: auto;
     margin-top: 30px;
     margin-bottom: 20px;
-    margin-right: 130px;
   }
   
   /* Jacket 1 */
   
  #jacketcontainer {
-    max-width: 800px;
-    margin: auto;
-    display: block;
- }
+    max-width: 900px;
+    margin: 40px auto;
+}
 
- #jacketcontainer p{
-    margin-right: 40px;
+#jacketcontainer .card {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;              
+}
+
+#jacketcontainer .card-image {
+    width: 320px;           
+    height: auto;
+    flex-shrink: 0;       
+}
+
+#jacketcontainer .card-content {
+  margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+}
+
+#jacketcontainer .card-title {
+    font-size: 28px;
     color: #0A3641;
-    font-size: 26px;
-    font-family: 'Maven Pro', 'verdana', 'sans-serif' ;
- }
+    font-family: 'Maven Pro', 'verdana', 'sans-serif';
+    margin: 0;
+}
 
- #jacketcontainer button{
+#jacketcontainer .card-price {
+    margin: 0;
+    color: #0A3641;
+    font-size: 22px;
+    text-align: center;
+    font-family: 'Maven Pro', 'verdana', 'sans-serif';
+}
+
+#jacketcontainer .card-description {
+    color: #0A3641;
+    font-size: 18px;
+    font-family: 'Maven Pro', 'verdana', 'sans-serif';
+    font-weight: 400;
+}
+
+#jacketcontainer .add-to-cart-btn {
     background-color: #0A3641;
     color: white;
     font-size: 18px;
     padding: 10px 20px;
-    font-family: 'Maven Pro', 'verdana', 'sans-serif' ;
+    font-family: 'Maven Pro', 'verdana', 'sans-serif';
     border-radius: 15px;
     text-align: center;
- }
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+}
   
   /* Shoppingcart */
   
